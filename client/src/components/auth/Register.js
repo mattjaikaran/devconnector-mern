@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import classnames from 'classnames'
@@ -18,6 +18,12 @@ class Register extends Component {
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    if(this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard')
+    }
   }
 
   onChange(e) {
@@ -65,7 +71,9 @@ class Register extends Component {
                     value={this.state.name}
                     onChange={this.onChange}
                   />
-                  { errors.name && (<div className="invalid-feedback">{errors.name}</div>) }
+                  { errors.name && (
+                    <div className="invalid-feedback">{errors.name}</div>
+                   )}
                 </div>
                 <div className="form-group">
                   <input
@@ -78,7 +86,9 @@ class Register extends Component {
                     value={this.state.email}
                     onChange={this.onChange}
                   />
-                  { errors.email && (<div className="invalid-feedback">{errors.email}</div>) }
+                  { errors.email && (
+                    <div className="invalid-feedback">{errors.email}</div>
+                  )}
                   <small className="form-text text-muted">This site uses Gravatar so if you want a profile image, use a Gravatar email</small>
                 </div>
                 <div className="form-group">
@@ -92,7 +102,9 @@ class Register extends Component {
                     value={this.state.password}
                     onChange={this.onChange}
                   />
-                  { errors.password && (<div className="invalid-feedback">{errors.password}</div>) }
+                  { errors.password && (
+                    <div className="invalid-feedback">{errors.password}</div>
+                  )}
                 </div>
                 <div className="form-group">
                   <input
@@ -105,7 +117,9 @@ class Register extends Component {
                     value={this.state.password2}
                     onChange={this.onChange}
                   />
-                  { errors.password2 && (<div className="invalid-feedback">{errors.password2}</div>) }
+                  { errors.password2 && (
+                    <div className="invalid-feedback">{errors.password2}</div>
+                  )}
                 </div>
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
