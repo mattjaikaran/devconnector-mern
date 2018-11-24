@@ -1,4 +1,5 @@
-const keys = {
-  clientId: 'c248ebfe68f08eb2b5b1',
-  clientSecret: 'e551610f0236828bb9b7a10cff41a9e26ae01d33',
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./keys-prod')
+} else {
+  module.exports = require('./keys-dev')
 }
